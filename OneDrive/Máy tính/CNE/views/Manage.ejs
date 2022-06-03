@@ -1,0 +1,61 @@
+<header
+  class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+  <a href="/Home" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+    <img src="/img/logo.jpg" width="229" height="68" alt="Cooking Never Easier">
+  </a>
+
+  <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+    <li><a href="/Home" class="nav-link px-2 link-secondary">Home</a></li>
+    <li><a href="/Admit" class="nav-link px-2 link-secondary">Admit</a></li>
+    <li><a href="/Manage" class="nav-link px-2 link-secondary">Manage</a></li>
+  </ul>
+
+
+  <div class="col-md-3 text-end">
+    <form method="POST" action="/search">
+      <input type="search" name="searchTerm" class="form-control" placeholder="Search..." aria-label="Search">
+    </form>
+  </div>
+</header>
+
+<div class="px-4 py-5 my-5 text-center">
+  <h1 class="display-5 fw-bold">Check new recipe and ban any user that bad influnence our community</h1>
+
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-8">
+
+    <form action="/Manage" enctype="multipart/form-data" method="POST">
+
+      <div class="row g-3">
+
+        <div class="col-12">
+          <label for="email" class="form-label">Email of the User has bad influence to the community</label>
+          <input type="email" name="email" id="email" class="form-control" required>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Ban User</button>
+        </div>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>
+</header>
+<h1 class="pb-4">User Recipe</h1>
+
+<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+  <% userRecipe.forEach(function(recipe, index){ %>
+    <a href="/userRecipe/<%= recipe._id %>" class="col text-center category__link">
+      <div class="category__img category__img--large shadow">
+        <img src="/img/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+      </div>
+      <div class="pt-1">
+        <%= recipe.name %>
+      </div>
+    </a>
+    <% }) %>
+</div>
